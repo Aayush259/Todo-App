@@ -11,6 +11,11 @@ function App() {
   let themeLogo;
   let themeAlt;
 
+  // This function toggles the app theme when called.
+  const changeTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  }
+
   // If theme is light then set theme logo to moon icon and alt text accordingly else set the opposite logo and alt text.
   if (theme === "light") {
     themeLogo = moonIcon;
@@ -26,7 +31,7 @@ function App() {
         <div id="background" className={theme}>
         </div>
         <main id="main">
-          <Header themeLogo={themeLogo} themeAlt={themeAlt} />
+          <Header themeLogo={themeLogo} themeAlt={themeAlt} changeTheme={changeTheme} />
         </main>
       </div>
     </>

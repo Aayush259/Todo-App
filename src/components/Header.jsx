@@ -5,7 +5,7 @@ function Header(props) {
         <>
         <header id="header" className="flex">
             <h1>Todo</h1>
-            <button id="changeThemeBtn">
+            <button id="changeThemeBtn" onClick={props.changeTheme}>
                 <img src={props.themeLogo} alt={props.themeAlt} />
             </button>
         </header>
