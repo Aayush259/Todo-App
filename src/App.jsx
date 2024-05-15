@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Header from "./components/Header";
+import AddTask from "./components/AddTask";
 import "./styles/styles.css";
 import moonIcon from "./images/icon-moon.svg";
 import sunIcon from "./images/icon-sun.svg";
@@ -32,6 +33,7 @@ function App() {
         </div>
         <main id="main">
           <Header themeLogo={themeLogo} themeAlt={themeAlt} changeTheme={changeTheme} />
+          <AddTask />
         </main>
       </div>
     </>
