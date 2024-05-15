@@ -1,20 +1,33 @@
+import { useState } from "react";
+import Header from "./components/Header";
 import "./styles/styles.css";
-import bgDesktopLight from "./images/bg-desktop-light.jpg";
-import bgDesktopDark from "./images/bg-desktop-dark.jpg";
-import bgMobileLight from "./images/bg-mobile-light.jpg";
-import bgMobileDark from "./images/bg-mobile-dark.jpg";
+import moonIcon from "./images/icon-moon.svg";
+import sunIcon from "./images/icon-sun.svg";
 
 function App() {
 
-  let backgroundImage = bgDesktopLight;
+  // Initializing theme state with light theme.
+  let [theme, setTheme] = useState("light");
+  let themeLogo;
+  let themeAlt;
+
+  // If theme is light then set theme logo to moon icon and alt text accordingly else set the opposite logo and alt text.
+  if (theme === "light") {
+    themeLogo = moonIcon;
+    themeAlt = "Shift to dark mode";
+  } else {
+    themeLogo = sunIcon;
+    themeAlt = "Shift to light mode.";
+  }
 
   return (
     <>
       <div id="app">
-        Todo App
-        <div id="background">
-          <img src={backgroundImage} alt="Background" />
+        <div id="background" className={theme}>
         </div>
+        <main id="main">
+          <Header themeLogo={themeLogo} themeAlt={themeAlt} />
+        </main>
       </div>
     </>
   )

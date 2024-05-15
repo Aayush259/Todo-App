@@ -22,8 +22,46 @@
     align-items:center;
 }
 
+button{
+    cursor:pointer;
+}
+
 #background{
     position:absolute;
     top:0;
     z-index:-10;
+    height:40vh;
+    width:100vw;
+    background-size:cover;
+}
+
+#background.light{
+    background-image:url("../images/bg-desktop-light.jpg");
+}
+
+#background.dark{
+    background-image:url("../images/bg-desktop-dark.jpg");
+}
+
+#main{
+    width:97vw;
+    max-width:500px;
+    margin:3.5rem auto 0 auto;
+}
+
+#header{
+    justify-content:space-between;
+}
+
+#header h1{
+    color:#FFF;
+    letter-spacing:3px;
+    font-size:2rem;
+    text-transform:uppercase;
+    font-weight:700;
+}
+
+#changeThemeBtn{
+    border:none;
+    background-color:transparent;
 }
