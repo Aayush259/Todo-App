@@ -130,3 +130,8 @@ label{
     background-color:transparent;
     border-radius:100px;
 }
+
+#removeTaskBtn{
+    background-color:transparent;
+    border:none;
+}
