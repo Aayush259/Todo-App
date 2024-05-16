@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import AddTask from "./components/AddTask";
+import TaskList from "./components/TaskList";
 import "./styles/styles.css";
 import moonIcon from "./images/icon-moon.svg";
 import sunIcon from "./images/icon-sun.svg";
@@ -9,6 +10,8 @@ function App() {
 
   // Initializing theme state with light theme.
   let [theme, setTheme] = useState("light");
+  let [taskList, updateTaskList] = useState(["Complete online JavaScript course", "Jog around the park 3x", "10 minutes meditation", "Read for 1 hour", "Pick up groceries", "Complete Todo App"]);
+
   let themeLogo;
   let themeAlt;
 
@@ -34,6 +37,7 @@ function App() {
         <main id="main">
           <Header themeLogo={themeLogo} themeAlt={themeAlt} changeTheme={changeTheme} />
           <AddTask />
+          <TaskList taskList={taskList} />
         </main>
       </div>
     </>
