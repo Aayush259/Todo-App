@@ -12,6 +12,11 @@ function App() {
   let [theme, setTheme] = useState("light");
   let [taskList, updateTaskList] = useState(["Complete online JavaScript course", "Jog around the park 3x", "10 minutes meditation", "Read for 1 hour", "Pick up groceries", "Complete Todo App"]);
 
+  // This function adds the task in task list.
+  const addTask = (task) => {
+    updateTaskList(prevTaskList => [...prevTaskList, task]);
+  }
+
   let themeLogo;
   let themeAlt;
 
@@ -41,7 +46,7 @@ function App() {
         </div>
         <main id="main">
           <Header themeLogo={themeLogo} themeAlt={themeAlt} changeTheme={changeTheme} />
-          <AddTask theme={theme} />
+          <AddTask theme={theme} addTask={addTask} />
           <TaskList taskList={taskList} theme={theme} />
         </main>
       </div>
