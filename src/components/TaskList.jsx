@@ -6,7 +6,7 @@ function TaskList(props) {
         <div id="taskList">
             {props.taskList.map((task,index) => {
                 return (
-                <div className="task flex" key={index}>
+                <div className={`task ${props.theme} flex`} key={index}>
                     <button id="addTaskBtn" className="leftTileBtn"></button>
                     <p style={{width: "100%"}}>{task}</p>
                 </div>)

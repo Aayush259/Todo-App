@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import AddTask from "./components/AddTask";
 import TaskList from "./components/TaskList";
@@ -20,6 +20,11 @@ function App() {
     setTheme(theme === "light" ? "dark" : "light");
   }
 
+  // Change body class when theme is changed to change its background color.
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
   // If theme is light then set theme logo to moon icon and alt text accordingly else set the opposite logo and alt text.
   if (theme === "light") {
     themeLogo = moonIcon;
@@ -36,8 +41,8 @@ function App() {
         </div>
         <main id="main">
           <Header themeLogo={themeLogo} themeAlt={themeAlt} changeTheme={changeTheme} />
-          <AddTask />
-          <TaskList taskList={taskList} />
+          <AddTask theme={theme} />
+          <TaskList taskList={taskList} theme={theme} />
         </main>
       </div>
     </>
