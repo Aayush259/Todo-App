@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { DndContext, closestCorners } from "@dnd-kit/core";
+import { arrayMove } from "@dnd-kit/sortable";
 import Header from "./components/Header";
 import AddTask from "./components/AddTask";
 import TaskList from "./components/TaskList";
@@ -52,6 +53,26 @@ function App() {
     setTheme(theme === "light" ? "dark" : "light");
   }
 
+  // This function returns the task whose id matches the passed argument id.
+  const getTaskWithIndex = (id) => {
+    return taskList.findIndex(task => task.id === id);
+  };
+
+  // This function places the task where the user has dropped it.
+  const handleDragEnd = (e) => {
+    const {active, over} = e;
+
+    if (active.id === over.id) return;
+
+    // Changing the dragged item index with the dropped item index.
+    updateTaskList(taskList => {
+      const originalTaskWithOriginalPosition = getTaskWithIndex(active.id);
+      const secondOriginalTaskWithOriginalPosition = getTaskWithIndex(over.id);
+
+      return arrayMove(taskList, originalTaskWithOriginalPosition, secondOriginalTaskWithOriginalPosition);
+    })
+  }
+
   // Change body class when theme is changed to change its background color.
   useEffect(() => {
     document.body.className = theme;
@@ -74,7 +95,7 @@ function App() {
         <main id="main">
           <Header themeLogo={themeLogo} themeAlt={themeAlt} changeTheme={changeTheme} />
           <AddTask theme={theme} addTask={addTask} />
-          <DndContext collisionDetection={closestCorners}>
+          <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
             <TaskList taskList={taskList} theme={theme} />
           </DndContext>
         </main>
