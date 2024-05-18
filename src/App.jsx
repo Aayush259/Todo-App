@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { DndContext, closestCorners } from "@dnd-kit/core";
-import { arrayMove } from "@dnd-kit/sortable";
+import { DndContext, KeyboardSensor, PointerSensor, TouchSensor, closestCorners, useSensor, useSensors } from "@dnd-kit/core";
+import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import Header from "./components/Header";
 import AddTask from "./components/AddTask";
 import TaskList from "./components/TaskList";
@@ -62,6 +62,7 @@ function App() {
   const handleDragEnd = (e) => {
     const {active, over} = e;
 
+    // If the draggable item is dropped at its original position then do nothing.
     if (active.id === over.id) return;
 
     // Changing the dragged item index with the dropped item index.
@@ -70,8 +71,17 @@ function App() {
       const secondOriginalTaskWithOriginalPosition = getTaskWithIndex(over.id);
 
       return arrayMove(taskList, originalTaskWithOriginalPosition, secondOriginalTaskWithOriginalPosition);
+    });
+  };
+
+  // Adding sensors for touch and keyboard controls for drag and drop the tasks.
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(TouchSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
     })
-  }
+  );
 
   // Change body class when theme is changed to change its background color.
   useEffect(() => {
@@ -95,7 +105,7 @@ function App() {
         <main id="main">
           <Header themeLogo={themeLogo} themeAlt={themeAlt} changeTheme={changeTheme} />
           <AddTask theme={theme} addTask={addTask} />
-          <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
+          <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd} sensors={sensors}>
             <TaskList taskList={taskList} theme={theme} />
           </DndContext>
         </main>
