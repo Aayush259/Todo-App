@@ -7,21 +7,20 @@ function AddTask(props) {
 
     // This function update the state of inputValue.
     const updateInputValue = (e) => {
-        const newTask = {
-            id: Date.now(),
-            title: e.target.value
-        }
-        setInputValue(newTask);
+        setInputValue(e.target.value);
     }
 
     // This function handles the click of addTaskBtn and add task to taskLIst array.
     const handleAddBtnClick = () => {
         const newTask = {
             id: Date.now(),
-            task: inputValue
+            title: inputValue
         }
-        props.addTask(newTask);
-        setInputValue("");
+
+        if (newTask.title !== "") {
+            props.addTask(newTask);
+            setInputValue("")
+        }
     }
 
     return (
