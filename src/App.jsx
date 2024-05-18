@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DndContext, closestCorners } from "@dnd-kit/core";
 import Header from "./components/Header";
 import AddTask from "./components/AddTask";
 import TaskList from "./components/TaskList";
@@ -73,7 +74,9 @@ function App() {
         <main id="main">
           <Header themeLogo={themeLogo} themeAlt={themeAlt} changeTheme={changeTheme} />
           <AddTask theme={theme} addTask={addTask} />
-          <TaskList taskList={taskList} theme={theme} />
+          <DndContext collisionDetection={closestCorners}>
+            <TaskList taskList={taskList} theme={theme} />
+          </DndContext>
         </main>
       </div>
     </>

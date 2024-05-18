@@ -1,3 +1,4 @@
+import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import Task from "./Task";
 
 function TaskList(props) {
@@ -8,9 +9,11 @@ function TaskList(props) {
     return (
         <>
         <div id="taskList">
-            {tasks.map(task => {
-                return <Task id={task.id} title={task.title} theme={props.theme} key={task.id} />
-            })}
+            <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
+                {tasks.map(task => {
+                    return <Task id={task.id} title={task.title} theme={props.theme} key={task.id} />
+                })}
+            </SortableContext>
         </div>
         </>
     )
