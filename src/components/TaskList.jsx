@@ -9,11 +9,11 @@ function TaskList(props) {
     return (
         <>
         <div id="taskList">
-            {props.taskList.map((task,index) => {
+            {props.taskList.map((task, index) => {
                 return (
-                <div className={`task ${props.theme} flex`} key={index} onMouseEnter={() => {setTaskHoverIndex(index)}} onMouseLeave={() => {setTaskHoverIndex(null)}}>
+                <div className={`task ${props.theme} flex`} key={task["id"]} onMouseEnter={() => {setTaskHoverIndex(index)}} onMouseLeave={() => {setTaskHoverIndex(null)}}>
                     <button id="addTaskBtn" className="leftTileBtn"></button>
-                    <p style={{width: "90%"}}>{task}</p>
+                    <p style={{width: "90%"}}>{task["task"]}</p>
                     {taskHoverIndex === index && (<button id="removeTaskBtn"><img src={iconCross} alt="Remove Task" /></button>)}
                 </div>)
             })}

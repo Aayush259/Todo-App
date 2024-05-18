@@ -10,7 +10,33 @@ function App() {
 
   // Initializing theme state with light theme.
   let [theme, setTheme] = useState("light");
-  let [taskList, updateTaskList] = useState(["Complete online JavaScript course", "Jog around the park 3x", "10 minutes meditation", "Read for 1 hour", "Pick up groceries", "Complete Todo App"]);
+  // let [taskList, updateTaskList] = useState([{"Complete online JavaScript course", "Jog around the park 3x", "10 minutes meditation", "Read for 1 hour", "Pick up groceries", "Complete Todo App"}]);
+  let [taskList, updateTaskList] = useState([
+    {
+      id: "1",
+      task: "Complete online JavaScript course"
+    },
+    {
+      id: "2",
+      task: "Jog around the park 3x"
+    },
+    {
+      id: "3",
+      task: "10 minutes meditation"
+    },
+    {
+      id: "4",
+      task: "Read for 1 hour"
+    },
+    {
+      id: "5",
+      task: "Pick up groceries"
+    },
+    {
+      id: "6",
+      task: "Complete Todo App"
+    }
+  ]);
 
   // This function adds the task in task list.
   const addTask = (task) => {

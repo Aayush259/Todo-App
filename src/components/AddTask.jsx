@@ -12,7 +12,11 @@ function AddTask(props) {
 
     // This function handles the click of addTaskBtn and add task to taskLIst array.
     const handleAddBtnClick = () => {
-        props.addTask(inputValue);
+        const newTask = {
+            id: Date.now(),
+            task: inputValue
+        }
+        props.addTask(newTask);
         setInputValue("");
     }
 
