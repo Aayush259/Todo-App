@@ -18,7 +18,8 @@ function Task({id, title, taskStatus, theme, removeTask}) {
 
     // This function handles the click of removeTaskBtn and remove the task from the list.
     const handleRemoveTaskBtnClick = (e) => {
-        removeTask(e.target.parentElement.parentElement.getAttribute('id'));
+        e.stopPropagation();
+        removeTask(id);
     }
 
     return (

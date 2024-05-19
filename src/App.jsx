@@ -80,8 +80,8 @@ function App() {
 
   // Adding sensors for touch and keyboard controls for drag and drop the tasks.
   const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(TouchSensor),
+    useSensor(PointerSensor, {activationConstraint: {delay: 100, tolerance: 5}}),
+    useSensor(TouchSensor, {activationConstraint: {delay: 100, tolerance: 5}}),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
