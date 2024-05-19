@@ -22,6 +22,10 @@
     align-items:center;
 }
 
+.hide{
+    visibility:hidden;
+}
+
 button{
     cursor:pointer;
 }

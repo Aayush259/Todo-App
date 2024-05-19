@@ -37,9 +37,13 @@ function Task({id, title, taskStatus, theme, removeTask}) {
 
                 <p style={{width: "90%"}}>{title}</p>
 
-                {
+                <button className={`removeTaskBtn ${taskHoverId === id ? '': 'hide'}`} onClick={handleRemoveTaskBtnClick}>
+                    <img src={iconCross} alt="Remove task" />
+                </button>
+
+                {/* {
                     taskHoverId === id && (<button className="removeTaskBtn" onClick={handleRemoveTaskBtnClick}><img src={iconCross} alt="Remove task" /></button>)
-                }
+                } */}
         </div>
     )
 }
