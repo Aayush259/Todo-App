@@ -43,6 +43,13 @@ function App() {
     updateTaskList(prevTaskList => [...prevTaskList, task]);
   }
 
+  // This function takes task's id as argument and remove that task from taskList.
+  const removeTask = (id) => {
+    let originalTaskList = [...taskList];
+    let updatedTaskList = originalTaskList.filter(task => task.id !== id);
+    updateTaskList(updatedTaskList);
+  }
+
   // This function toggles the app theme when called.
   const changeTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -94,7 +101,7 @@ function App() {
           <Header theme={theme} changeTheme={changeTheme} />
           <AddTask theme={theme} addTask={addTask} />
           <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd} sensors={sensors}>
-            <TaskList taskList={taskList} theme={theme} />
+            <TaskList taskList={taskList} theme={theme} removeTask={removeTask} />
           </DndContext>
         </main>
       </div>

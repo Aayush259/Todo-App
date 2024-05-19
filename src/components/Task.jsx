@@ -3,7 +3,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import iconCross from "../images/icon-cross.svg";
 
-function Task({id, title, taskStatus, theme}) {
+function Task({id, title, taskStatus, theme, removeTask}) {
 
     const {attributes, listeners, setNodeRef, transform, transition} = useSortable({id});
 
@@ -15,6 +15,11 @@ function Task({id, title, taskStatus, theme}) {
 
     // Initializing taskHoverIndex state. When user will hover on any task then this state will be updated to the index of that task and removeTaskBtn will be displayed.
     const [taskHoverId, setTaskHoverId] = useState(null);
+
+    // This function handles the click of removeTaskBtn and remove the task from the list.
+    const handleRemoveTaskBtnClick = (e) => {
+        removeTask(e.target.parentElement.parentElement.getAttribute('id'));
+    }
 
     return (
         <div
@@ -32,7 +37,7 @@ function Task({id, title, taskStatus, theme}) {
                 <p style={{width: "90%"}}>{title}</p>
 
                 {
-                    taskHoverId === id && (<button id="removeTaskBtn"><img src={iconCross} alt="Remove task" /></button>)
+                    taskHoverId === id && (<button className="removeTaskBtn" onClick={handleRemoveTaskBtnClick}><img src={iconCross} alt="Remove task" /></button>)
                 }
         </div>
     )

@@ -133,7 +133,7 @@ label{
     border-radius:100px;
 }
 
-#removeTaskBtn{
+.removeTaskBtn{
     background-color:transparent;
     border:none;
 }
