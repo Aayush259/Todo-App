@@ -11,7 +11,7 @@ function TaskList(props) {
         <div id="taskList">
             <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
                 {tasks.map(task => {
-                    return <Task id={task.id} title={task.title} theme={props.theme} key={task.id} removeTask={props.removeTask} />
+                    return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} />
                 })}
             </SortableContext>
         </div>

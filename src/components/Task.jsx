@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import iconCross from "../images/icon-cross.svg";
+import iconCheck from "../images/icon-check.svg";
 
-function Task({id, title, taskStatus, theme, removeTask}) {
+function Task({id, title, taskStatus, theme, removeTask, updateTaskStatus}) {
 
     const {attributes, listeners, setNodeRef, transform, transition} = useSortable({id});
 
@@ -22,6 +23,12 @@ function Task({id, title, taskStatus, theme, removeTask}) {
         removeTask(id);
     }
 
+    // This function handles the click of completeTaskBtn and mark the task's status as completed.
+    const handleCompleteTaskBtnClick = (e) => {
+        e.stopPropagation();
+        updateTaskStatus(id);
+    }
+
     return (
         <div
             className={`task ${theme} flex`}
@@ -33,17 +40,17 @@ function Task({id, title, taskStatus, theme, removeTask}) {
             {...listeners}
             style={dragAndDropStyle}>
 
-                <button id="completeTaskBtn" className="leftTileBtn"></button>
+                <button className={`completeTaskBtn leftTileBtn flex ${taskStatus}`} onClick={handleCompleteTaskBtnClick}>
+                    {
+                        taskStatus === "Completed" && <img src={iconCheck} alt="Completed" className="iconCheck" />
+                    }
+                </button>
 
                 <p style={{width: "90%"}}>{title}</p>
 
                 <button className={`removeTaskBtn ${taskHoverId === id ? '': 'hide'}`} onClick={handleRemoveTaskBtnClick}>
                     <img src={iconCross} alt="Remove task" />
                 </button>
-
-                {/* {
-                    taskHoverId === id && (<button className="removeTaskBtn" onClick={handleRemoveTaskBtnClick}><img src={iconCross} alt="Remove task" /></button>)
-                } */}
         </div>
     )
 }

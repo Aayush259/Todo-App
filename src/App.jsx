@@ -14,33 +14,52 @@ function App() {
   const [taskList, updateTaskList] = useState([
     {
       id: "1",
-      title: "Complete online JavaScript course"
+      title: "Complete online JavaScript course",
+      taskStatus: "Incomplete"
     },
     {
       id: "2",
-      title: "Jog around the park 3x"
+      title: "Jog around the park 3x",
+      taskStatus: "Incomplete"
     },
     {
       id: "3",
-      title: "10 minutes meditation"
+      title: "10 minutes meditation",
+      taskStatus: "Incomplete"
     },
     {
       id: "4",
-      title: "Read for 1 hour"
+      title: "Read for 1 hour",
+      taskStatus: "Incomplete"
     },
     {
       id: "5",
-      title: "Pick up groceries"
+      title: "Pick up groceries",
+      taskStatus: "Incomplete"
     },
     {
       id: "6",
-      title: "Complete Todo App"
+      title: "Complete Todo App",
+      taskStatus: "Incomplete"
     }
   ]);
+
+  // This function returns the index of the task from tasklist using task id.
+  const getTaskIndex = (id) => {
+    return taskList.findIndex(task => task.id === id);
+  }
 
   // This function adds the task in task list.
   const addTask = (task) => {
     updateTaskList(prevTaskList => [...prevTaskList, task]);
+  }
+
+  // This function updates the task's status to completed using the task's id
+  const updateTaskStatus = (id) => {
+    let updatedTaskList = [...taskList];
+    const indexOfTaskToUpdate = getTaskIndex(id);
+    updatedTaskList[indexOfTaskToUpdate].taskStatus = 'Completed';
+    updateTaskList(updatedTaskList);
   }
 
   // This function takes task's id as argument and remove that task from taskList.
@@ -101,7 +120,7 @@ function App() {
           <Header theme={theme} changeTheme={changeTheme} />
           <AddTask theme={theme} addTask={addTask} />
           <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd} sensors={sensors}>
-            <TaskList taskList={taskList} theme={theme} removeTask={removeTask} />
+            <TaskList taskList={taskList} theme={theme} removeTask={removeTask} updateTaskStatus={updateTaskStatus} />
           </DndContext>
         </main>
       </div>

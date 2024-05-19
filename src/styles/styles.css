@@ -131,7 +131,7 @@ label{
 
 .leftTileBtn{
     height:25px;
-    width:26px;
+    width:28px;
     border:1px solid var(--Light-Grayish-Blue);
     background-color:transparent;
     border-radius:100px;
@@ -140,4 +140,15 @@ label{
 .removeTaskBtn{
     background-color:transparent;
     border:none;
+}
+
+
+.completeTaskBtn.Completed{
+    background:linear-gradient(to bottom right, hsl(220, 100%, 65%), hsl(270, 100%, 63%));
+    border:none;
+}
+
+.completeTaskBtn.Completed + p{
+    text-decoration:line-through;
+    color:var(--Light-Grayish-Blue);
 }
