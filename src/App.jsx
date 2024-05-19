@@ -58,7 +58,7 @@ function App() {
     const {active, over, delta} = e;
 
     // If the draggable item is dropped at its original position then do nothing.
-    if (Math.abs(delta.x) < 5 || Math.abs(delta.y) < 5 || active.id === over.id) {
+    if (Math.abs(delta.x) < 2 || Math.abs(delta.y) < 2 || active.id === over.id) {
       return;
     }
 
