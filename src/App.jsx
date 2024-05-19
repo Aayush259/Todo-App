@@ -55,10 +55,12 @@ function App() {
 
   // This function places the task where the user has dropped it.
   const handleDragEnd = (e) => {
-    const {active, over} = e;
+    const {active, over, delta} = e;
 
     // If the draggable item is dropped at its original position then do nothing.
-    if (active.id === over.id) return;
+    if (Math.abs(delta.x) < 5 || Math.abs(delta.y) < 5 || active.id === over.id) {
+      return;
+    }
 
     // Changing the dragged item index with the dropped item index.
     updateTaskList(taskList => {
