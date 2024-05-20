@@ -11,6 +11,13 @@ function AddTask(props) {
         setInputValue(e.target.value);
     }
 
+    // Add task in taskList when user press enter key.
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleAddBtnClick();
+        }
+    };
+
     // This function handles the click of addTaskBtn and add task to taskLIst array.
     const handleAddBtnClick = () => {
         const newTask = {
@@ -32,7 +39,7 @@ function AddTask(props) {
                 <img src={iconCross} alt="Add task" />
             </button>
             <label htmlFor="newTask">
-                <input type="text" id="newTask" placeholder="Create a new todo..." value={inputValue} onChange={updateInputValue} />
+                <input type="text" id="newTask" placeholder="Create a new todo..." value={inputValue} onChange={updateInputValue} onKeyDown={handleKeyPress} />
             </label>
         </div>
         </>
