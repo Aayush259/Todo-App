@@ -28,6 +28,8 @@
 
 button{
     cursor:pointer;
+    border:none;
+    background-color:transparent;
 }
 
 body{
@@ -79,7 +81,7 @@ body.dark{
     background-color:transparent;
 }
 
-.addTask,.task{
+.addTask,.task, .taskListFooter{
     margin:1.8rem auto 0 auto;
     width:100%;
     background-color:#FFF;
@@ -91,7 +93,7 @@ body.dark{
     color:var(--Very-Dark-Grayish-Blue);
 }
 
-.task.dark,.addTask.dark{
+.task.dark,.addTask.dark,.taskListFooter.dark{
     background-color:var(--Very-Dark-Desaturated-Blue);
     color:#FFF;
 }
@@ -151,4 +153,39 @@ label{
 .completeTaskBtn.Completed + p{
     text-decoration:line-through;
     color:var(--Light-Grayish-Blue);
+}
+
+.taskListFooter{
+    margin-top:0;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+    font-size:14px;
+}
+
+.taskActionBtnContainer{
+    width:70%;
+    justify-content:space-between;
+}
+
+.primaryActions .actionBtn{
+    font-weight:700;
+    color:var(--Dark-Grayish-Blue);
+    margin-left:14px;
+}
+
+.primaryActions .actionBtn:hover{
+    color:var(--Very-Dark-Grayish-Blue);
+}
+
+.secondaryActions .actionBtn{
+    color:var(--Dark-Grayish-Blue);
+    font-weight:500;
+}
+
+.secondaryActions .actionBtn:hover{
+    color:var(--Light-Grayish-Blue-Hover);
+}
+
+.numberOfTasks{
+    color:var(--Dark-Grayish-Blue);
 }
