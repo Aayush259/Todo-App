@@ -4,7 +4,7 @@ import { CSS } from "@dnd-kit/utilities";
 import iconCross from "../images/icon-cross.svg";
 import iconCheck from "../images/icon-check.svg";
 
-function Task({id, title, taskStatus, theme, removeTask, updateTaskStatus}) {
+function Task({id, title, taskStatus, theme, removeTask, updateTaskStatus, removeTaskBtnClass}) {
 
     const {attributes, listeners, setNodeRef, transform, transition} = useSortable({id});
 
@@ -48,7 +48,7 @@ function Task({id, title, taskStatus, theme, removeTask, updateTaskStatus}) {
 
                 <p style={{width: "90%"}}>{title}</p>
 
-                <button className={`removeTaskBtn ${taskHoverId === id ? '': 'hide'}`} onClick={handleRemoveTaskBtnClick}>
+                <button className={`removeTaskBtn ${taskHoverId === id ? '': 'hide'} ${removeTaskBtnClass}`} onClick={handleRemoveTaskBtnClick}>
                     <img src={iconCross} alt="Remove task" />
                 </button>
         </div>

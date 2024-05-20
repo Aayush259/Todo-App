@@ -50,7 +50,7 @@ function TaskList(props) {
         const view = (
             <>
             {activeTasks.map(task => {
-                return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} />
+                return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} removeTaskBtnClass={"hide"} />
             })}
             </>
         )
@@ -69,7 +69,7 @@ function TaskList(props) {
         const view = (
             <>
             {completedTasks.map(task => {
-                return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} />
+                return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} removeTaskBtnClass={"hide"} />
             })}
             </>
         )
@@ -81,7 +81,7 @@ function TaskList(props) {
     const allTasksView = (
         <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
             {tasks.map(task => {
-                return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} />
+                return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} removeTaskBtnClass={""} />
             })}
         </SortableContext>
     )
