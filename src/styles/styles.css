@@ -34,6 +34,7 @@ button{
 
 body{
     background-color:var(--Light-Grayish-Blue-Hover);
+    width:100vw;
     overflow-x:hidden;
 }
 
@@ -59,7 +60,7 @@ body.dark{
 }
 
 #main{
-    width:97vw;
+    width:90vw;
     max-width:500px;
     margin:4rem auto 0 auto;
 }
@@ -85,10 +86,10 @@ body.dark{
     margin:1.8rem auto 0 auto;
     width:100%;
     background-color:#FFF;
-    height:55px;
+    min-height:55px;
     border-radius:0.3rem;
     justify-content:space-between;
-    padding:0 1.5rem;
+    padding:0.3rem 1.5rem;
     gap:1.2rem;
     color:var(--Very-Dark-Grayish-Blue);
 }
@@ -192,4 +193,76 @@ label{
 
 .actionBtn.active{
     color:#3F86B3 !important;
+}
+
+.featureText{
+    text-align:center;
+    margin:3rem auto 3rem auto;
+    color:var(--Dark-Grayish-Blue);
+    font-size:14px;
+    font-weight:600;
+}
+
+@media only screen and (max-width:500px) {
+    #background{
+        height:33vh;
+    }
+    #background.light{
+        background-image:url("../images/bg-mobile-light.jpg");
+    }
+    #background.dark{
+        background-image:url("../images/bg-mobile-dark.jpg");
+    }
+    .leftTileBtn{
+        height:20px;
+        width:25px;
+    }
+    #newTask{
+        font-size:14px;
+    }
+    #taskList{
+        overflow:visible;
+    }
+    .task:nth-child(1){
+        border-top-left-radius:0.3rem;
+        border-top-right-radius:0.3rem;
+    }
+    .addTask,.task, .taskListFooter{
+        padding:0.3rem 1rem;
+        font-size:14px;
+    }
+    .removeTaskBtn img{
+        height:15px;
+    }
+    .taskActionBtnContainer{
+        width:fit-content;
+    }
+    .taskListFooter{
+        position:relative;
+    }
+    .primaryActions{
+        display:flex;
+        justify-content:center;
+        gap:5px;
+        position:absolute;
+        margin-top:5rem;
+        top:0;
+        left:0;
+        z-index:3;
+        min-height:55px;
+        width:90vw;
+        background-color:#FFF;
+        border-radius:0.3rem;
+    }
+    .primaryActions .actionBtn{
+        font-size:16px;
+    }
+    .taskListFooter.dark .primaryActions{
+        background-color:var(--Very-Dark-Desaturated-Blue);
+        color:#FFF;
+    }
+    .featureText{
+        margin:8rem auto 3rem auto;
+        font-size:16px;
+    }
 }

@@ -111,6 +111,7 @@ function TaskList(props) {
                 </div>
             </div>
         </div>
+        <p className="featureText">Drag and drop to reorder list</p>
         </>
     )
 }
