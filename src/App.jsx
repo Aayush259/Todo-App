@@ -14,7 +14,7 @@ function App() {
   const [taskList, updateTaskList] = useState([
     {
       id: "1",
-      title: "Complete online JavaScript course",
+      title: "Exercise for 30 minutes",
       taskStatus: "Incomplete"
     },
     {
@@ -39,7 +39,7 @@ function App() {
     },
     {
       id: "6",
-      title: "Complete Todo App",
+      title: "Drink 8 glasses of water",
       taskStatus: "Incomplete"
     }
   ]);
