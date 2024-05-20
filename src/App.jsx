@@ -69,6 +69,13 @@ function App() {
     updateTaskList(updatedTaskList);
   }
 
+  // This function removes all the completed tasks from taskList.
+  const clearCompletedTasks = () => {
+    const originalTaskList = [...taskList];
+    const updatedTaskList = originalTaskList.filter(task => task.taskStatus !== "Completed")
+    updateTaskList(updatedTaskList);
+  }
+
   // This function toggles the app theme when called.
   const changeTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -120,7 +127,7 @@ function App() {
           <Header theme={theme} changeTheme={changeTheme} />
           <AddTask theme={theme} addTask={addTask} />
           <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd} sensors={sensors}>
-            <TaskList taskList={taskList} theme={theme} removeTask={removeTask} updateTaskStatus={updateTaskStatus} />
+            <TaskList taskList={taskList} theme={theme} removeTask={removeTask} updateTaskStatus={updateTaskStatus} clearCompletedTasks={clearCompletedTasks} />
           </DndContext>
         </main>
       </div>

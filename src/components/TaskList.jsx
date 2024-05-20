@@ -16,6 +16,10 @@ function TaskList(props) {
     // Number of tasks Completed in taskList.
     const numberOfTasksCompleted = tasks.length - completedTasks.length;
 
+    // This function removes all completed tasks from the taskList.
+    const handleClearAllTasksBtnClick = () => {
+        props.clearCompletedTasks();
+    }
 
     // This function displays all the tasks on screen.
     const displayAllTasks = () => {
@@ -77,7 +81,7 @@ function TaskList(props) {
                         <button id="displayCompletedTasksBtn" className="actionBtn" onClick={displayCompletedTasks}>Completed</button>
                     </div>
                     <div className="secondaryActions">
-                        <button id="clearAllTasksBtn" className="actionBtn">Clear Completed</button>
+                        <button id="clearAllTasksBtn" className="actionBtn" onClick={handleClearAllTasksBtnClick}>Clear Completed</button>
                     </div>
                 </div>
             </div>
