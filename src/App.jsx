@@ -42,8 +42,11 @@ function App() {
     }
   ];
 
+  // Getting appTheme from local storage if it is present, else set appTheme to light.
+  const appTheme = localStorage.getItem("theme") || "light";
+
   // Initializing theme state with light theme.
-  let [theme, setTheme] = useState("light");
+  let [theme, setTheme] = useState(appTheme);
   // let [taskList, updateTaskList] = useState([{"Complete online JavaScript course", "Jog around the park 3x", "10 minutes meditation", "Read for 1 hour", "Pick up groceries", "Complete Todo App"}]);
   const [taskList, updateTaskList] = useState(taskData);
 
@@ -51,6 +54,11 @@ function App() {
   useEffect(() => {
     localStorage.setItem("taskData", JSON.stringify(taskList));
   }, [taskList]);
+
+  // Update theme in localStorage whenever the appTheme is changed by the user.
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   // This function returns the index of the task from tasklist using task id.
   const getTaskIndex = (id) => {
