@@ -8,10 +8,8 @@ import "./styles/styles.css";
 
 function App() {
 
-  // Initializing theme state with light theme.
-  let [theme, setTheme] = useState("light");
-  // let [taskList, updateTaskList] = useState([{"Complete online JavaScript course", "Jog around the park 3x", "10 minutes meditation", "Read for 1 hour", "Pick up groceries", "Complete Todo App"}]);
-  const [taskList, updateTaskList] = useState([
+  // Getting taskData from local storage if it is present, else set taskData to pre-populate tasks.
+  const taskData = JSON.parse(localStorage.getItem("taskData")) || [
     {
       id: "1",
       title: "Exercise for 30 minutes",
@@ -42,7 +40,17 @@ function App() {
       title: "Drink 8 glasses of water",
       taskStatus: "Incomplete"
     }
-  ]);
+  ];
+
+  // Initializing theme state with light theme.
+  let [theme, setTheme] = useState("light");
+  // let [taskList, updateTaskList] = useState([{"Complete online JavaScript course", "Jog around the park 3x", "10 minutes meditation", "Read for 1 hour", "Pick up groceries", "Complete Todo App"}]);
+  const [taskList, updateTaskList] = useState(taskData);
+
+  // Update localStorage whenever the taskList gets updated.
+  useEffect(() => {
+    localStorage.setItem("taskData", JSON.stringify(taskList));
+  }, [taskList]);
 
   // This function returns the index of the task from tasklist using task id.
   const getTaskIndex = (id) => {

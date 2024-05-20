@@ -15,7 +15,8 @@ function AddTask(props) {
     const handleAddBtnClick = () => {
         const newTask = {
             id: Date.now(),
-            title: inputValue
+            title: inputValue,
+            taskStatus: "Incomplete"
         }
 
         if (newTask.title !== "") {
