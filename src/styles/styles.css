@@ -189,3 +189,7 @@ label{
 .numberOfTasks{
     color:var(--Dark-Grayish-Blue);
 }
+
+.actionBtn.active{
+    color:#3F86B3 !important;
+}

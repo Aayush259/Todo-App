@@ -4,6 +4,12 @@ import Task from "./Task";
 
 function TaskList(props) {
 
+    const [activeActionBtn, setActiveActionBtn] = useState({
+        allTaskBtn: "active",
+        activeTaskBtn: "notActive",
+        completedTaskBtn: "notActive"
+    })
+
     // Tasks array of objects.
     const tasks = props.taskList;
 
@@ -23,12 +29,24 @@ function TaskList(props) {
 
     // This function displays all the tasks on screen.
     const displayAllTasks = () => {
+        // Update the color of the clicked button.
+        setActiveActionBtn({
+            allTaskBtn: "active",
+            activeTaskBtn: "notActive",
+            completedTaskBtn: "notActive"
+        });
         setActiveTasksView(null);
         setCompletedTasksView(null);
     }
 
     // This function creates a view for active tasks and displays them all screen.
     const displayActiveTasks = () => {
+        // Update the color of the clicked button.
+        setActiveActionBtn({
+            allTaskBtn: "notActive",
+            activeTaskBtn: "active",
+            completedTaskBtn: "notActive"
+        })
         const view = (
             <>
             {activeTasks.map(task => {
@@ -42,6 +60,12 @@ function TaskList(props) {
 
     // This function creates a view for completed tasks and displays them on screen.
     const displayCompletedTasks = () => {
+        // Update the color of the clicked button.
+        setActiveActionBtn({
+            allTaskBtn: "notActive",
+            activeTaskBtn: "notActive",
+            completedTaskBtn: "active"
+        })
         const view = (
             <>
             {completedTasks.map(task => {
@@ -76,9 +100,9 @@ function TaskList(props) {
 
                 <div className="taskActionBtnContainer flex">
                     <div className="primaryActions">
-                        <button id="displayAllTasksBtn" className="actionBtn" style={{color: "#3F86B3"}} onClick={displayAllTasks}>All</button>
-                        <button id="displayActiveTasksBtn" className="actionBtn" onClick={displayActiveTasks}>Active</button>
-                        <button id="displayCompletedTasksBtn" className="actionBtn" onClick={displayCompletedTasks}>Completed</button>
+                        <button id="displayAllTasksBtn" className={`actionBtn ${activeActionBtn.allTaskBtn}`} onClick={displayAllTasks}>All</button>
+                        <button id="displayActiveTasksBtn" className={`actionBtn ${activeActionBtn.activeTaskBtn}`} onClick={displayActiveTasks}>Active</button>
+                        <button id="displayCompletedTasksBtn" className={`actionBtn ${activeActionBtn.completedTaskBtn}`} onClick={displayCompletedTasks}>Completed</button>
                     </div>
                     <div className="secondaryActions">
                         <button id="clearAllTasksBtn" className="actionBtn" onClick={handleClearAllTasksBtnClick}>Clear Completed</button>
