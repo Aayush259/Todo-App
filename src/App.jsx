@@ -97,11 +97,6 @@ function App() {
     setTheme(theme === "light" ? "dark" : "light");
   }
 
-  // This function returns the task whose id matches the passed argument id.
-  const getTaskWithIndex = (id) => {
-    return taskList.findIndex(task => task.id === id);
-  };
-
   // This function places the task where the user has dropped it.
   const handleDragEnd = (e) => {
     const {active, over, delta} = e;
@@ -113,8 +108,8 @@ function App() {
 
     // Changing the dragged item index with the dropped item index.
     updateTaskList(taskList => {
-      const originalTaskWithOriginalPosition = getTaskWithIndex(active.id);
-      const secondOriginalTaskWithOriginalPosition = getTaskWithIndex(over.id);
+      const originalTaskWithOriginalPosition = getTaskIndex(active.id);
+      const secondOriginalTaskWithOriginalPosition = getTaskIndex(over.id);
 
       return arrayMove(taskList, originalTaskWithOriginalPosition, secondOriginalTaskWithOriginalPosition);
     });
