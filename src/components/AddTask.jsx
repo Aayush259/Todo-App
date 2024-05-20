@@ -1,4 +1,5 @@
 import { useState } from "react";
+import iconCross from "../images/icon-cross.svg";
 
 function AddTask(props) {
 
@@ -26,7 +27,9 @@ function AddTask(props) {
     return (
         <>
         <div className={`addTask ${props.theme} flex`}>
-            <button id="addTaskBtn" className="leftTileBtn" onClick={handleAddBtnClick}></button>
+            <button id="addTaskBtn" className="leftTileBtn flex" onClick={handleAddBtnClick}>
+                <img src={iconCross} alt="Add task" />
+            </button>
             <label htmlFor="newTask">
                 <input type="text" id="newTask" placeholder="Create a new todo..." value={inputValue} onChange={updateInputValue} />
             </label>

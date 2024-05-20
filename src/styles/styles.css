@@ -132,6 +132,11 @@ label{
     outline:0;
 }
 
+#addTaskBtn img{
+    height:10px;
+    transform:rotate(45deg);
+}
+
 .leftTileBtn{
     height:25px;
     width:28px;
