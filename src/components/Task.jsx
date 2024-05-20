@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import iconCross from "../images/icon-cross.svg";
 import iconCheck from "../images/icon-check.svg";
 
 function Task({id, title, taskStatus, theme, removeTask, updateTaskStatus, removeTaskBtnClass}) {
+
+    // Initializing value of isTouchDevice state to false.
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+    // If ontouchstart event is in window object, then the device has a touch screen and set isTouchDevice to true to display all removeTaskBtn.
+    useEffect(() => {
+        setIsTouchDevice('ontouchstart' in window);
+    }, []);
 
     const {attributes, listeners, setNodeRef, transform, transition} = useSortable({id});
 
@@ -48,9 +56,15 @@ function Task({id, title, taskStatus, theme, removeTask, updateTaskStatus, remov
 
                 <p style={{width: "90%"}}>{title}</p>
 
-                <button className={`removeTaskBtn ${taskHoverId === id ? '': 'hide'} ${removeTaskBtnClass}`} onClick={handleRemoveTaskBtnClick}>
-                    <img src={iconCross} alt="Remove task" />
-                </button>
+                {isTouchDevice ? (
+                    <button className={`removeTaskBtn ${removeTaskBtnClass}`} onClick={handleRemoveTaskBtnClick}>
+                        <img src={iconCross} alt="Remove task" />
+                    </button>
+                ) : (
+                    <button className={`removeTaskBtn ${taskHoverId === id ? '': 'hide'} ${removeTaskBtnClass}`} onClick={handleRemoveTaskBtnClick}>
+                        <img src={iconCross} alt="Remove task" />
+                    </button>
+                )}
         </div>
     )
 }

@@ -4,6 +4,7 @@ import Task from "./Task";
 
 function TaskList(props) {
 
+    // activeActionBtn state will keep track of the primary btn which is active to change it's color.
     const [activeActionBtn, setActiveActionBtn] = useState({
         allTaskBtn: "active",
         activeTaskBtn: "notActive",
