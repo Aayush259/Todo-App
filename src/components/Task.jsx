@@ -4,7 +4,7 @@ import { CSS } from "@dnd-kit/utilities";
 import iconCross from "../images/icon-cross.svg";
 import iconCheck from "../images/icon-check.svg";
 
-function Task({id, title, taskStatus, theme, removeTask, updateTaskStatus, removeTaskBtnClass}) {
+function Task({id, title, taskStatus, theme, removeTask, updateTaskStatus, removeTaskBtnClass, isButtonDisabled}) {
 
     // Initializing value of isTouchDevice state to false.
     const [isTouchDevice, setIsTouchDevice] = useState(false);
@@ -48,7 +48,7 @@ function Task({id, title, taskStatus, theme, removeTask, updateTaskStatus, remov
             {...listeners}
             style={dragAndDropStyle}>
 
-                <button className={`completeTaskBtn leftTileBtn flex ${taskStatus}`} onClick={handleCompleteTaskBtnClick}>
+                <button className={`completeTaskBtn leftTileBtn flex ${taskStatus} ${isButtonDisabled}`} onClick={handleCompleteTaskBtnClick} disabled={isButtonDisabled}>
                     {
                         taskStatus === "Completed" && <img src={iconCheck} alt="Completed" className="iconCheck" />
                     }

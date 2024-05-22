@@ -30,6 +30,7 @@ function TaskList(props) {
 
     // This function displays all the tasks on screen.
     const displayAllTasks = () => {
+
         // Update the color of the clicked button.
         setActiveActionBtn({
             allTaskBtn: "active",
@@ -42,6 +43,7 @@ function TaskList(props) {
 
     // This function creates a view for active tasks and displays them all screen.
     const displayActiveTasks = () => {
+
         // Update the color of the clicked button.
         setActiveActionBtn({
             allTaskBtn: "notActive",
@@ -51,7 +53,7 @@ function TaskList(props) {
         const view = (
             <>
             {activeTasks.map(task => {
-                return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} removeTaskBtnClass={"hide"} />
+                return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} removeTaskBtnClass={"hide"} isButtonDisabled={true} />
             })}
             </>
         )
@@ -61,6 +63,7 @@ function TaskList(props) {
 
     // This function creates a view for completed tasks and displays them on screen.
     const displayCompletedTasks = () => {
+
         // Update the color of the clicked button.
         setActiveActionBtn({
             allTaskBtn: "notActive",
@@ -70,7 +73,7 @@ function TaskList(props) {
         const view = (
             <>
             {completedTasks.map(task => {
-                return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} removeTaskBtnClass={"hide"} />
+                return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} removeTaskBtnClass={"hide"} isButtonDisabled={true} />
             })}
             </>
         )
@@ -82,7 +85,7 @@ function TaskList(props) {
     const allTasksView = (
         <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
             {tasks.map(task => {
-                return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} removeTaskBtnClass={""} />
+                return <Task id={task.id} title={task.title} taskStatus={task.taskStatus} theme={props.theme} key={task.id} removeTask={props.removeTask} updateTaskStatus={props.updateTaskStatus} removeTaskBtnClass={""} isButtonDisabled={false} />
             })}
         </SortableContext>
     )

@@ -74,7 +74,9 @@ function App() {
   const updateTaskStatus = (id) => {
     let updatedTaskList = [...taskList];
     const indexOfTaskToUpdate = getTaskIndex(id);
-    updatedTaskList[indexOfTaskToUpdate].taskStatus = 'Completed';
+    const previousTaskStatus = updatedTaskList[indexOfTaskToUpdate].taskStatus;
+
+    updatedTaskList[indexOfTaskToUpdate].taskStatus = previousTaskStatus === "Incomplete" ? "Completed" : "Incomplete";
     updateTaskList(updatedTaskList);
   }
 

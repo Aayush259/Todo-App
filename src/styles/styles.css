@@ -32,6 +32,10 @@ button{
     background-color:transparent;
 }
 
+button.buttonDisabled{
+    cursor:not-allowed !important;
+}
+
 body{
     background-color:var(--Light-Grayish-Blue-Hover);
     width:100vw;
